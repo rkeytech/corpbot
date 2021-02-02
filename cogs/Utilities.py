@@ -2,10 +2,11 @@ import discord
 from discord.ext import commands
 import csv
 
+
 class Utilities(commands.Cog):
     def __init__(self, client):
         self.client = client
-    
+
     def read_csv(self, filename):
         with open(filename, newline='') as f:
             rdr = csv.reader(f, delimiter=',')
@@ -19,7 +20,6 @@ class Utilities(commands.Cog):
     @commands.command()
     async def giveaway(self, ctx):
         self.read_csv('giveaways.csv')
-        
 
 
 def setup(client):

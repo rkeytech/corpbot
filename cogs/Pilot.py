@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 
+
 class Pilot(commands.Cog):
     def __init__(self, client):
         self.client = client
@@ -40,7 +41,7 @@ class Pilot(commands.Cog):
             except Exception as e:
                 print(e.args[0])
         else:
-            await ctx.message.channel.send(f'{member.nick} please use first the command `!ign` to set your in game nickname and become a pilot of our corporation!')    
+            await ctx.message.channel.send(f'{member.nick} please use first the command `!ign` to set your in game nickname and become a pilot of our corporation!')
 
 
 def setup(client):
