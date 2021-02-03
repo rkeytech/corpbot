@@ -22,7 +22,7 @@ class Utilities(commands.Cog):
     # Create commands with @commands.command()
     @commands.command()
     async def giveaway(self, ctx, loot='giveaways.csv'):
-        giveaway_items = self.read_csv(loot)
+        giveaway_items = self.read_csv(f'./assets/{loot}')
         print(giveaway_items)
 
 

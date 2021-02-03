@@ -47,12 +47,13 @@ class Fleet(commands.Cog):
     @commands.command()
     async def ready(self, ctx):
         member = ctx.message.author
-        guild = self.client.Guilds[0]
+        guild = self.client.guilds[0]
         pilots = set()
         if member.top_role.name == 'Directors':
             if ctx.message.channel.category.name == 'Fleets':
                 v_channel = await guild.create_voice_channel(
-                    ctx.message.channel.name
+                    name=ctx.message.channel.name,
+                    category=guild.get_channel(804891415942660110).category
                 )
                 pinned = await ctx.message.channel.pins()
                 msg = await ctx.message.channel.fetch_message(pinned[0].id)
@@ -61,16 +62,17 @@ class Fleet(commands.Cog):
                     pilots.update(users)
                 for pilot in pilots:
                     await pilot.move_to(v_channel)
+                await ctx.message.channel.purge(bulk=False)
             else:
                 await ctx.message.channel.send(
-                    f'{member.nick} you must be in a Fleet Channel to make the\
-                         appropriate fleet ready for action!'
+                    f'{member.nick} you must be in a Fleet Channel to make the \
+                        appropriate fleet ready for action!'
                 )
 
         else:
             await ctx.message.channel.send(
-                f'{member.nick} only **Directors** can make\
-                     the fleet ready for action!')
+                f'{member.nick} only **Directors** can make \
+                    the fleet ready for action!')
 
 
 def setup(client):
