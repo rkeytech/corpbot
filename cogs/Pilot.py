@@ -38,17 +38,13 @@ class Pilot(commands.Cog):
                     await member.add_roles(role)
                 else:
                     await ctx.message.channel.send(
-                        f"{member.nick.capitalize()} the career of {career} \
-                            you are trying to focus is not for you! For now \
-                            at least. Try another one!"
+                        f"{member.nick.capitalize()} the career of {career} you are trying to focus is not for you! For now at least. Try another one!"
                     )
             except Exception as e:
                 print(e.args[0])
         else:
             await ctx.message.channel.send(
-                f'{member.nick} please use first the command `!ign` to set \
-                    your in game nickname and become a pilot \
-                    of our corporation!'
+                f'{member.nick} please use first the command `!ign` to set your in game nickname and become a pilot of our corporation!'
             )
 
 

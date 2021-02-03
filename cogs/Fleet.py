@@ -31,11 +31,7 @@ class Fleet(commands.Cog):
             )
             mbed.add_field(
                 name='__Take Action__',
-                value=f"React to this message, with any reaction, if your are \
-                    interested in participating in the \
-                    {fleet_name.split(' ')[0].capitalize()} Operation taking \
-                    place in **{tm} minutes** at **{place}**."
-            )
+                value=f"React to this message, with any reaction, if your are interested in participating in the {fleet_name.split(' ')[0].capitalize()} Operation taking place in **{tm} minutes** at **{place}**.")
             mbed.set_author(name=member.nick, icon_url=member.avatar_url)
             msg = await fleet_channel.send(embed=mbed)
             await msg.pin()
@@ -65,14 +61,12 @@ class Fleet(commands.Cog):
                 await ctx.message.channel.purge(bulk=False)
             else:
                 await ctx.message.channel.send(
-                    f'{member.nick} you must be in a Fleet Channel to make the \
-                        appropriate fleet ready for action!'
+                    f'{member.nick} you must be in a Fleet Channel to make the appropriate fleet ready for action!'
                 )
 
         else:
             await ctx.message.channel.send(
-                f'{member.nick} only **Directors** can make \
-                    the fleet ready for action!')
+                f'{member.nick} only **Directors** can make the fleet ready for action!')
 
 
 def setup(client):

@@ -28,17 +28,13 @@ class Utilities(commands.Cog):
         member = ctx.message.author
         mbed = discord.Embed(
             name=f"{name} GIVEAWAY".upper(),
-            description=f"This is a {name} giveaway so we can share with you \
-                something back, for all your troubles and for being \
-                nice and active pilots.",
+            description=f"This is a {name} giveaway so we can share with you something back, for all your troubles and for being nice and active pilots.",
             color=discord.Colour.dark_gold()
         )
         mbed.set_author(name=member.nick, icon_url=member.avatar_url)
         mbed.add_field(
             name='__How To participate__',
-            value="In order to participate in our giveaway the only thing you \
-                have to do is to react to this message. You can react with \
-                any emoticon you like. It doesn't matter. Or doed it? :)",
+            value="In order to participate in our giveaway the only thing you have to do is to react to this message. You can react with any emoticon you like. It doesn't matter. Or does it? :)",
             inline=False
         )
         mbed.set_footer(text=f"code:{member.id}")
@@ -59,24 +55,21 @@ class Utilities(commands.Cog):
             pilots = set()
             pinned = await ctx.message.channel.pins()
             msg = await ctx.message.channel.fetch_message(pinned[0].id)
-            owner_id = msg.embeds[-1].footer.text.split(':').strip()
+            owner_id = msg.embeds[-1].footer.text.split(':')[-1].strip()
             if owner_id == str(ctx.message.author.id):
                 for reaction in msg.reactions:
                     users = await reaction.users().flatten()
                     pilots.update(users)
-                winner = choice(pilots)
+                winner = choice(list(pilots))
                 if giveaway_items:
                     w_item = choice(giveaway_items)
                 else:
-                    w_item = 'this giveaway'
+                    w_item = ('this giveaway', 'this giveaway',)
                 await ctx.message.channel.send(
-                    f"_**{winner.nick}**_ _is the winner for_ \
-                    _**{w_item}**_ _!!_"
+                    f"_**{winner.nick}**_ _is the winner for_ _**{w_item[0]}**_ _!!_"
                 )
                 await winner.send(
-                    f"You are the winner of the _**\
-                    {ctx.message.channel.name.split('-')[0]}\
-                    **_ giveaway! Congratulation!!"
+                    f"You are the winner of the _**{ctx.message.channel.name.split('-')[0]}**_ giveaway! Congratulation!!"
                 )
             else:
                 await ctx.message.channel.send(
