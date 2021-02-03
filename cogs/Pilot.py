@@ -13,7 +13,7 @@ class Pilot(commands.Cog):
     # Commands
     # Create commands with @commands.command()
     @commands.command()
-    async def ign(self, ctx, nick=None):
+    async def ign(self, ctx, *, nick=None):
         member = ctx.message.author
         guild = self.client.guilds[0]
         try:
@@ -37,11 +37,19 @@ class Pilot(commands.Cog):
                     role = discord.utils.get(guild.roles, name=career)
                     await member.add_roles(role)
                 else:
-                    await ctx.message.channel.send(f"{member.nick.capitalize()} the career of {career} you are trying to focus is not for you! For now at least. Try another one!")
+                    await ctx.message.channel.send(
+                        f"{member.nick.capitalize()} the career of {career} \
+                            you are trying to focus is not for you! For now \
+                            at least. Try another one!"
+                    )
             except Exception as e:
                 print(e.args[0])
         else:
-            await ctx.message.channel.send(f'{member.nick} please use first the command `!ign` to set your in game nickname and become a pilot of our corporation!')
+            await ctx.message.channel.send(
+                f'{member.nick} please use first the command `!ign` to set \
+                    your in game nickname and become a pilot \
+                    of our corporation!'
+            )
 
 
 def setup(client):

@@ -16,7 +16,7 @@ class Fleet(commands.Cog):
         member = ctx.message.author
         guild = self.client.guilds[0]
         cat = discord.utils.get(guild.categories, name='Fleets')
-        if member.top_role == 'Directors':
+        if member.top_role.name == 'Directors':
             try:
                 dir_role = member.roles[-2]
             except Exception:
@@ -49,7 +49,7 @@ class Fleet(commands.Cog):
         member = ctx.message.author
         guild = self.client.Guilds[0]
         pilots = set()
-        if member.top_role == 'Directors':
+        if member.top_role.name == 'Directors':
             if ctx.message.channel.category.name == 'Fleets':
                 v_channel = await guild.create_voice_channel(
                     ctx.message.channel.name
