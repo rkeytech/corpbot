@@ -30,7 +30,7 @@ class Ops(commands.Cog):
             color = discord.Color.dark_green()
         )
         mbed.set_footer(text="React to the message if you are interesting")
-        msg = await chnl.send
+        msg = await chnl.send(embed=mbed)
         await msg.pin()
 
 def setup(client):
