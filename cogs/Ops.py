@@ -12,10 +12,10 @@ class Ops(commands.Cog):
     # Commands
     # Create commands with @commands.command()
     @commands.command()
-    async def op(self, ctx, time=None, place=None, *, desc="This is a simple corp operation"):
+    async def op(self, ctx, name=None, time=None, place=None, *, desc="This is a simple corp operation"):
         guild = self.client.guilds[0]
         cat = discord.utils.get(guild.categories, name='OPs')
-        name = ctx.message.content
+        name = name
         time = time
         place = place
         # Create a specific channel for the Operation
