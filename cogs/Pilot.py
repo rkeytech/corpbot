@@ -47,6 +47,17 @@ class Pilot(commands.Cog):
                 f'{member.nick} please use first the command `!ign` to set your in game nickname and become a pilot of our corporation!'
             )
 
+    @commands.command()
+    async def alt(self, ctx, nick=None):
+        member = ctx.message.author
+        guild = self.client.guilds[0]
+        try:
+            alt_nick = nick
+            if alt_nick:
+                nick = member.nick
+                await member.edit(nick=f"{nick} ({alt_nick})")
+        except Exception as e:
+            print(e.args[0])
 
 def setup(client):
     client.add_cog(Pilot(client))

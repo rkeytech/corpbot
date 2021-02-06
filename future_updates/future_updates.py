@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 
-class Fleet(commands.Cog):
+class FleetUp(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -70,4 +70,4 @@ class Fleet(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(Fleet(client))
+    client.add_cog(FleetUp(client))

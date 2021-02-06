@@ -30,15 +30,10 @@ with os.scandir('./cogs') as it:
 # -------------------------------
 # Events
 
-
 @bot.event
 async def on_ready():
-    print(f"{bot.user.name} is ready!")
+    print(f"{bot.user.name} is online!")
 
-
-@bot.event
-async def on_member_join(member):
-    print(f"{member} joined the server!")
 
 # -------------------------------
 # Commands
