@@ -33,7 +33,7 @@ class Pilot(commands.Cog):
         if 'Pilots' in member_roles:
             career = f"{career.lower().capitalize()}s"
             try:
-                if career not in self.restricted_roles:
+                if career and career not in self.restricted_roles:
                     role = discord.utils.get(guild.roles, name=career)
                     await member.add_roles(role)
                 else:
