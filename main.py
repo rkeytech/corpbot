@@ -1,10 +1,8 @@
-from dotenv import load_dotenv
 import discord
 from discord.ext import commands
 import os
 import logging
-# Load env variables
-load_dotenv()
+
 
 # Configure logging for Bot
 logger = logging.getLogger('corpbot')
