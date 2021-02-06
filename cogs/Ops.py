@@ -29,7 +29,7 @@ class Ops(commands.Cog):
             description = f"{desc}",
             color = discord.Color.dark_green()
         )
-        mbed.set_footer(value="React to the message if you are interesting")
+        mbed.set_footer(text="React to the message if you are interesting")
         msg = await chnl.send
         await msg.pin()
 
