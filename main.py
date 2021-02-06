@@ -43,7 +43,7 @@ async def on_new_member_join():
         color = discord.Color.magenta()
     )
     mbed.set_author(
-        name = bot.name
+        name = bot.name,
         icon_url = bot.avatar_url
     )
     mbed.add_field(
